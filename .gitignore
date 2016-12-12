@@ -1,0 +1,8 @@
+/_build
+/cover
+/deps
+/doc
+/docs
+*.ez
+config/config.exs
+
