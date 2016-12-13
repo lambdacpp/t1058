@@ -1,4 +1,4 @@
-defmodule TrotCasTest do
+defmodule T1058Test do
   use ExUnit.Case
   doctest TrotCas
 

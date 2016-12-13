@@ -8,23 +8,16 @@ use Mix.Config
 # if you want to provide default values for your application for
 # 3rd-party users, it should be done in your "mix.exs" file.
 
-# You can configure for your application as:
-#
-#     config :trot_cas, key: :value
-#
-# And access this configuration in your application as:
-#
-#     Application.get_env(:trot_cas, :key)
-#
-# Or configure a 3rd-party app:
-#
-#     config :logger, level: :info
-#
-
 config :trot, :port, 4000
-config :trot, :router, TrotCas.Router
+config :trot, :router, T1058.Router
 
 
+config :t1058,
+  cas_api_url: "http://118.6.16.9/nj/service/",
+  cas_api_name: "租售资产",
+  cas_api_sysid: "22222222",
+  cas_api_key: "Passworddddddddd"
+  
 
 config :ueberauth, Ueberauth,
   providers: [cas: {Ueberauth.Strategy.CAS, [

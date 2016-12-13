@@ -1,8 +1,8 @@
-defmodule TrotCas.Mixfile do
+defmodule T1058.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :trot_cas,
+    [app: :t1058,
      version: "0.1.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
@@ -14,7 +14,7 @@ defmodule TrotCas.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :trot, :ueberauth_cas]]
+    [applications: [:logger, :trot, :ueberauth_cas, :httpotion]]
   end
 
   # Dependencies can be Hex packages:
@@ -29,6 +29,9 @@ defmodule TrotCas.Mixfile do
   defp deps do
     [{:ueberauth, "~> 0.2"},
      {:ueberauth_cas, github: "lambdacpp/ueberauth_cas", branch: "another_cas_server"},
-     {:trot, github: "hexedpackets/trot"}]
+     {:trot, github: "hexedpackets/trot"},
+     {:cors_plug, "~> 1.1"},
+     {:httpotion, "~> 3.0.2"},
+     {:poison, "~> 3.0", override: true} ]
   end
 end

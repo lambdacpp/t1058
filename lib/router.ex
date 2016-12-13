@@ -1,7 +1,10 @@
-defmodule TrotCas.Router do
+defmodule T1058.Router do
   alias Ueberauth.Strategy.CAS
   use Trot.Router
+  require Logger
+  plug CORSPlug
 
+  
   @session Plug.Session.init(
     store: :cookie,
     key: "_app",
@@ -9,6 +12,7 @@ defmodule TrotCas.Router do
     signing_salt: "09821posasyuiyuI11jspisdas"
   )
 
+  
   get "/" do
     conn = conn
              |> Map.put(:secret_key_base, String.duplicate("1qwGGnj8", 8))
@@ -38,6 +42,25 @@ defmodule TrotCas.Router do
     end
   end
 
+  get "/user" do
+    user =  conn
+    |> Map.put(:secret_key_base, String.duplicate("1qwGGnj8", 8))
+    |> Plug.Session.call(@session)
+    |> fetch_session
+    |> get_session(:user_name)
+    if is_nil user do
+      "unauthorized"
+    else
+      case T1058.User.query user do
+        nil ->
+          "#{user} logined, but get user info fail"
+        json ->
+          json
+      end
+    end
+  end
+
+  
   get "/logout" do
     is_inner = CAS.API.inner_client?(conn)
     conn
@@ -49,6 +72,9 @@ defmodule TrotCas.Router do
       |> Plug.Conn.send_resp(307, "")
   end
 
+  post "/" do
+    Logger.info "User Logout"
+  end
 
   import_routes Trot.NotFound
 end
