@@ -5,4 +5,4 @@
 /docs
 *.ez
 config/config.exs
-
+erl_crash.dump

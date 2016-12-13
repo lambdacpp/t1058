@@ -17,6 +17,7 @@ config :t1058,
   cas_api_name: "租售资产",
   cas_api_sysid: "22222222",
   cas_api_key: "Passworddddddddd"
+  app_url: "http://6.6.6.6:8888"
   
 
 config :ueberauth, Ueberauth,
