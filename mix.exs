@@ -14,7 +14,9 @@ defmodule T1058.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :trot, :ueberauth_cas, :httpotion]]
+    [applications: [:logger, :trot, :ueberauth_cas, :httpotion],
+     mod: {T1058,[]}
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -30,7 +32,6 @@ defmodule T1058.Mixfile do
     [{:ueberauth, "~> 0.2"},
      {:ueberauth_cas, github: "lambdacpp/ueberauth_cas", branch: "another_cas_server"},
      {:trot, github: "hexedpackets/trot"},
-     {:cors_plug, "~> 1.1"},
      {:httpotion, "~> 3.0.2"},
      {:poison, "~> 3.0", override: true} ]
   end
