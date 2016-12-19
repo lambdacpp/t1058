@@ -1,0 +1,7 @@
+version: '2'
+services:
+  cas:
+    build: ./cas_bridge
+    volumes:
+      - ./config.exs:/t1058/config/config.exs
+    restart: always

@@ -78,7 +78,9 @@ defmodule T1058.Router do
         {user_name,user_id} ->
           case T1058.User.query user_name do
             nil ->
+              Logger.info "#{conn.remote_ip |> Tuple.to_list|> Enum.join(".")} get user #{user_name} info fail."
               "#{user_name} logined, but get user info fail"
+              %{uid: user_id,loginaccount: user_name} |> Poison.encode!
             user_info ->
               is_map(user_info) |>  IO.inspect
               user_info |> Map.put(:uid,user_id) |> Poison.encode!
