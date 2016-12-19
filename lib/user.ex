@@ -5,6 +5,7 @@ defmodule T1058.User do
   alias T1058.Post
   
   defstruct [:loginaccount,
+             :uid,
              :username,
              :password,
              :telephone,

@@ -44,6 +44,7 @@ defmodule T1058.Router do
           Logger.debug "#{conn.remote_ip |> Tuple.to_list|> Enum.join(".")} ticket used. user:#{conn.private.cas_user.user}"
           conn
             |> put_session(:user_name, conn.private.cas_user.user)
+            |> put_session(:user_id, conn.private.cas_user.uid)
             |> Plug.Conn.put_resp_header("location", "/")
             |> Plug.Conn.send_resp(307, "")
         end
@@ -51,8 +52,9 @@ defmodule T1058.Router do
         Logger.debug "#{conn.remote_ip |> Tuple.to_list|> Enum.join(".")} get user #{current_user} by session"
 
         key = get_session(conn,:userkey)
+        uid = get_session(conn,:user_id)
         unless is_nil key do
-          T1058.UserTable.add(key,current_user)
+          T1058.UserTable.add(key,{current_user,uid})
         else
           Logger.info "#{conn.remote_ip |> Tuple.to_list|> Enum.join(".")}  no userkey in session"
         end
@@ -73,12 +75,13 @@ defmodule T1058.Router do
       case T1058.UserTable.search(param_map["userkey"] |> process_key ) do
         nil ->
           "unauthorized"
-        user_name ->
+        {user_name,user_id} ->
           case T1058.User.query user_name do
             nil ->
               "#{user_name} logined, but get user info fail"
-            json ->
-              json
+            user_info ->
+              is_map(user_info) |>  IO.inspect
+              user_info |> Map.put(:uid,user_id) |> Poison.encode!
           end
       end
     else
