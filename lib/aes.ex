@@ -40,7 +40,7 @@ defmodule T1058.AES do
 
   # Convenience function to get the application's configuration key.
   defp key do
-    Application.get_env(:t1058, :cas_api_key)
+    T1058.Util.get_conf(:cas_api_key)
   end
   
 end

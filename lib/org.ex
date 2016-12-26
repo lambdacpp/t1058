@@ -34,9 +34,9 @@ defmodule T1058.Org do
   def url(ops) do
     if ops in [:add,:delete,:update,:query] do
       ops_str = ops |> to_string |> String.upcase
-      Application.get_env(:t1058, :cas_api_url)<>
+      T1058.Util.get_conf(:cas_api_url)<>
         "orgdetRs/categoryservice/category/"<>
-        Application.get_env(:t1058, :cas_api_sysid)<>
+        T1058.Util.get_conf(:cas_api_sysid)<>
         "/" <>
         (ops_str |> to_string |> String.upcase )
     else

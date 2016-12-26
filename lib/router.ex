@@ -59,7 +59,7 @@ defmodule T1058.Router do
           Logger.info "#{conn.remote_ip |> Tuple.to_list|> Enum.join(".")}  no userkey in session"
         end
         url = case get_session(conn,:returnurl) do
-                nil -> Application.get_env(:t1058, :app_url)
+                nil -> T1058.Util.get_conf(:app_url)
                 app_url -> app_url
               end
         conn 

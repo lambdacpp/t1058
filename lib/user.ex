@@ -1,7 +1,7 @@
 defmodule T1058.User do
   @derive [Poison.Encoder]
   require Logger
-
+  
   alias T1058.Post
   
   defstruct [:loginaccount,
@@ -77,9 +77,9 @@ defmodule T1058.User do
   def url(ops)do
     if ops in [:add,:delete,:update,:query] do
       ops_str = ops |> to_string |> String.upcase
-      Application.get_env(:t1058, :cas_api_url) <>
+      T1058.Util.get_conf(:cas_api_url) <>
         "categoryservice/category/" <>
-        Application.get_env(:t1058, :cas_api_sysid)<>
+        T1058.Util.get_conf(:cas_api_sysid)<>
         "/USER_OP/" <>
         (ops_str |> to_string |> String.upcase )
     else
