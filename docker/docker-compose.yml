@@ -2,6 +2,21 @@ version: '2'
 services:
   cas:
     build: ./cas_bridge
-    volumes:
-      - ./config.exs:/t1058/config/config.exs
+    ports:
+      - 4000:4000
+    environment:  
+      CAS_API_URL: "http://118.6.16.9/nj/service/"
+      CAS_API_NAME: "租售资产"
+      CAS_API_SYSID: "22222222"
+      CAS_API_KEY: "Passworddddddddd"
+      APP_URL: "http://6.6.6.6:8888"
+      U_BASE_URL: "http://118.6.16.9/cas/"
+      U_LOGOUT_URL: "http://118.6.16.9/cas/logout"
+      U_CALLBACK: "http://202.111.111.11:4000/"
+      INNER_U_BASE_URL: "http://192.168.190.100/cas/"
+      INNER_U_LOGOUT_URL: "http://192.168.190.100/cas/logout"
+      INNER_U_CALLBACK: "http://172.16.100.100:4000/"
+      INNER_NET: "192.168.0.0/16,172.16.0.0/16"
     restart: always
+
+
