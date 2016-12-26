@@ -7,7 +7,7 @@ RUN apk add git
 RUN rm -rf /var/cache/apk/*
 
 
-RUN git clone -b another_cas_server  https://github.com/lambdacpp/t1058.git  /t1058
+RUN git clone https://github.com/lambdacpp/t1058.git  /t1058
 
 WORKDIR /t1058
 
