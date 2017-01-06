@@ -32,7 +32,8 @@ config :ueberauth, Ueberauth,
                              callback: "http://172.16.100.100:4000/",
                            ]},
               inner_net: ["192.168.0.0/16",
-                          "172.16.0.0/16"]
+                          "172.16.0.0/16"],
+              deploy_inner: true 
              ]
 
 
