@@ -30,7 +30,7 @@ defmodule T1058.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:ueberauth, "~> 0.2"},
-     {:ueberauth_cas, github: "lambdacpp/ueberauth_cas", branch: "another_cas_server1"},
+     {:ueberauth_cas, github: "lambdacpp/ueberauth_cas", branch: "another_cas_server"},
      {:trot, github: "hexedpackets/trot"},
      {:httpotion, "~> 3.0.2"},
      {:poison, "~> 3.0", override: true} ]
