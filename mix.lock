@@ -19,4 +19,4 @@
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.1", "28a4d65b7f59893bc2c7de786dec1e1555bd742d336043fe644ae956c3497fbe", [:make, :rebar], []},
   "trot": {:git, "https://github.com/hexedpackets/trot.git", "ff9da25440914b6d4c4b8feb21577420193aebf4", []},
   "ueberauth": {:hex, :ueberauth, "0.4.0", "bc72d5e5a7bdcbfcf28a756e34630816edabc926303bdce7e171f7ac7ffa4f91", [:mix], [{:plug, "~> 1.2", [hex: :plug, optional: false]}]},
-  "ueberauth_cas": {:git, "https://github.com/lambdacpp/ueberauth_cas.git", "2abf28c6e97e042c7d3a900924fad7f87250f342", [branch: "another_cas_server"]}}
+  "ueberauth_cas": {:git, "https://github.com/lambdacpp/ueberauth_cas.git", "33cfab5a342dec8225002dc1f6039c72cd26751b", [branch: "another_cas_server1"]}}
